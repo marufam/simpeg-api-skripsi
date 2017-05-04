@@ -52,10 +52,10 @@ router.post('/login', function (req, res) {
 	})
 })
 
-router.get('/cek', function (req, res) {
-	var token = req.body.token || req.query.token || req.headers['x-access-token'];
-	iam = whois(token);
-	res.json(iam + "helo")
-})
+// router.get('/cek', function (req, res) {
+// 	var token = req.body.token || req.query.token || req.headers['x-access-token'];
+// 	iam = whois(token);
+// 	res.json(iam + "helo")
+// })
 
 module.exports = router;

@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const jwt = require('../component/verifyJWT');
+const permission = require('../component/permission');
+
 const pegawaiJabatan = require('../schema/pegawai.jabatan');
 const pegawaiBiodata = require('../schema/pegawai.biodata');
 
@@ -15,7 +17,9 @@ router.use(jwt.claimToken);
 
 mongoose.Promise = global.Promise;
 
-router.get('/nip/:nip', function (req, res, next) {
+router.get('/nip/:nip',function (req, res, next) {
+	console.log(req.method)
+	permission.check()
 	var nip = req.params.nip;
 	pegawaiJabatan
 	.find({"nip": nip})
