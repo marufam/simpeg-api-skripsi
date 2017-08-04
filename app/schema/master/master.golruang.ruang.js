@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 module.exports = mongoose.model(
-	'masterruang'
+	'masterruang',
 	new Schema({
 		keterangan : String,
 		createdAt : {

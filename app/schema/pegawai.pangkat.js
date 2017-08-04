@@ -7,7 +7,7 @@ module.exports = mongoose.model(
 			pejabatPengangkat : String,
 			noSK : String,
 			tglSK : Date,
-			tmtGolongan : Date,
+			tmtjabatan : Date,
 			masaKerja : String,
 			golongan : String,
 			angkaKredit : Number,

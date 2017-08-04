@@ -11,7 +11,7 @@ module.exports = mongoose.model(
 		ruang : {
 			type : Schema.Types.ObjectId,
 			ref : 'masterruang'
-		}
+		},
 		createdAt : {
 			type : Date,
 			default : Date.now()

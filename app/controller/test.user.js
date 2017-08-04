@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
 var app = express();
+const upload_process = require('../component/uploadfile');
+
 //import shcema
 const User = require('../schema/user');
 
@@ -26,6 +28,10 @@ router.get('/', function (req, res) {
 			});
 		}
 	})
+})
+
+router.post('/', function (req, res) {
+	upload_process.upload(req, res)
 })
 
 

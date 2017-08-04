@@ -4,7 +4,7 @@ const jwt = require('../component/verifyJWT');
 const router = express.Router();
 var app = express();
 //import shcema
-const Pegawaibiodata = require('../schema/pegawai.biodata');
+const pegawailogin = require('../schema/pegawai.login');
 
 //component 
 const config = require('../component/config');
@@ -19,13 +19,19 @@ var iam;
 function whois(token) {
 	jwt.test(token ,function(me) {
 		return me
+		console.log(me)
 	})
 }
 
 router.post('/login', function (req, res) {
-	Pegawaibiodata.findOne({
-		"login.username" : req.body.name
-	}, function (err, pegawaiauth) {
+	pegawailogin.findOne({
+		"username" : req.body.name
+	})
+	.populate({
+		path : "role",
+		select : "namarole"
+	})
+	.exec(function (err, pegawaiauth) {
 		if (err){
 			res.send(err)
 		}else if (!pegawaiauth){
@@ -34,8 +40,8 @@ router.post('/login', function (req, res) {
 				message : "authentication failed",
 				data : JSON.stringify(req.body)
 			})
-		}else if(pegawaiauth.login){
-			if(pegawaiauth.login.password != req.body.password){
+		}else if(pegawaiauth){
+			if(pegawaiauth.password != req.body.password){
 				res.json({
 					success : false,
 					message : "authentication failed. wrong password"
@@ -50,12 +56,14 @@ router.post('/login', function (req, res) {
 			}
 		}
 	})
+
 })
 
-// router.get('/cek', function (req, res) {
-// 	var token = req.body.token || req.query.token || req.headers['x-access-token'];
-// 	iam = whois(token);
-// 	res.json(iam + "helo")
-// })
+router.get('/whois', function (req, res) {
+	var token = req.body.token || req.query.token || req.headers['x-access-token'];
+	jwt.test(token, function (me) {
+		res.json(me._doc)
+	})
+})
 
 module.exports = router;

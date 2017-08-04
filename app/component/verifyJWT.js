@@ -42,10 +42,7 @@ module.exports = {
 		jwt.verify(token, 'simpeg', function (err, decoded) {
 				// err message 
 				if (err) {
-					return res.json({
-						success : false,
-						message : "failed to authentication"
-					});
+					callback("who are you")
 				}else{
 					// console.log(decoded);
 					callback(decoded);

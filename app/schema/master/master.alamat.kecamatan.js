@@ -8,7 +8,7 @@ module.exports = mongoose.model(
 		kota : {
 			type : Schema.Types.ObjectId,
 			ref : 'masterkota'
-		}
+		},
 		createdAt : {
 			type : Date,
 			default : Date.now()

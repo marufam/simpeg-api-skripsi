@@ -4,10 +4,10 @@ module.exports = mongoose.model(
 		'masterrole',
 		new Schema({
 			namarole : String,
-			create : Boolean,
-			read : Boolean,
-			update : Boolean,
-			delete : Boolean,
+			POST : Boolean,
+			GET : Boolean,
+			PUT : Boolean,
+			DELETE : Boolean,
 			createdAt : {
 				type : Date,
 				default : Date.now()

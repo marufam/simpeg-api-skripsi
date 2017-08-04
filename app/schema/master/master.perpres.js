@@ -6,6 +6,7 @@ module.exports = mongoose.model(
 	new Schema({
 		nomor : String,
 		status : Boolean,
+		filename : String,
 		createdAt : {
 			type : Date,
 			default : Date.now()

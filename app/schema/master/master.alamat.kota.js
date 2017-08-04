@@ -8,7 +8,7 @@ module.exports = mongoose.model(
 		provinsi : {
 			type : Schema.Types.ObjectId,
 			ref : 'masterprovinsi'
-		}
+		},
 		createdAt : {
 			type : Date,
 			default : Date.now()

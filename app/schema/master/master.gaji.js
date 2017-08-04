@@ -13,7 +13,7 @@ module.exports = mongoose.model(
 		perpres : {
 			type : Schema.Types.ObjectId,
 			ref : 'masterperpres'
-		}
+		},
 		createdAt : {
 			type : Date,
 			default : Date.now()

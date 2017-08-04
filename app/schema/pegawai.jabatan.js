@@ -11,11 +11,20 @@ module.exports = mongoose.model(
 		pejabatPengangkat : String,
 		noSK : String,
 		tglSK : Date,
-		unitInduk : String,
-		unitKerja : String,
+		unitInduk : {
+			type : Schema.Types.ObjectId,
+			ref : 'masterukerinstansi'
+		},
+		unitKerja :{
+			type : Schema.Types.ObjectId,
+			ref : 'masterukerdetail'
+		},
 		posisi : String,
 		eselon : String,
-		golongan : String,
+		golongan : {
+			type : Schema.Types.ObjectId,
+			ref : 'mastergolruang'
+		},
 		createdAt : {
 			type : Date,
 			default : Date.now()

@@ -9,9 +9,12 @@ module.exports = mongoose.model(
 			NomorSK : String,
 			tglSK : String,
 			gol : String,
-			masaKerja : String,
+			masaKerja : {
+				tahun : Number,
+				bulan : Number
+			},
 			tmtSK : String,
-			gaji : String,
+			gaji : Number,
 			createdAta : {
 				type : Date,
 				default : Date.now()

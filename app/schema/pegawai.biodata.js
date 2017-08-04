@@ -3,6 +3,7 @@ var Schema = mongoose.Schema
 module.exports = mongoose.model(
 		'pegawaibiodata',
 		new Schema({
+			avatar : String,
 			login : {
 				username : String,
 				password : String
@@ -20,13 +21,25 @@ module.exports = mongoose.model(
 					tempat : String,
 					tanggal : Date
 				},
-				agama : String,
+				agama : {
+					type : Schema.Types.ObjectId,
+					ref : 'masteragama'
+				},
 				alamat : {
 					jalan : String,
 					desa : String,
-					kecamatan : String,
-					kabupaten : String,
-					provinsi : String
+					kecamatan : {
+						type : Schema.Types.ObjectId,
+						ref : 'masterkecamatan'
+						},
+					kabupaten : {
+						type : Schema.Types.ObjectId,
+						ref : 'masterkota'
+						},
+					provinsi : {
+						type : Schema.Types.ObjectId,
+						ref : 'masterprovinsi'
+						}
 				},
 				statusKawin : Boolean,
 				jeniskelamin : Boolean,
@@ -38,7 +51,14 @@ module.exports = mongoose.model(
 				statusPNS : Boolean,
 				jenisPegawai : String,
 				jabatan : String,
-				uker : String,
+				instansi : {
+					type : Schema.Types.ObjectId,
+					ref : 'masterukerinstansi'
+				},
+				uker : {
+					type : Schema.Types.ObjectId,
+					ref : 'masterukerdetail'
+				},
 			},
 			pangkat :{
 				type : Schema.Types.ObjectId,
